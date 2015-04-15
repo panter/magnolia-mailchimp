@@ -20,6 +20,10 @@
 		<newsletterVersion>2.0</newsletterVersion>
 		<junitVersion>4.11</junitVersion>
 	</properties>
+	<scm>
+		<connection>scm:git:https://github.com/panter/magnolia-mailchimp.git</connection>
+	</scm>
+
 	<dependencies>
 		<dependency>
 			<groupId>info.magnolia</groupId>
@@ -40,7 +44,7 @@
 			<version>${ecwidMailchimpVersion}</version>
 		</dependency>
 
-		
+
 
 		<!-- TEST -->
 		<dependency>
@@ -81,7 +85,18 @@
 			</resource>
 		</resources>
 	</build>
-
+	<distributionManagement>
+		<repository>
+			<id>panter-releases</id>
+			<name>Internal Releases</name>
+			<url>https://java.panter.ch/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>panter-snapshots</id>
+			<name>Internal Releases</name>
+			<url>https://java.panter.ch/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<repositories>
 		<repository>
 			<id>magnolia.public</id>
@@ -89,6 +104,7 @@
 			<snapshots>
 			</snapshots>
 		</repository>
+
 		<!-- IF YOU NEED MODULES FROM THE ENTERPRISE VERSION, UNCOMMENT THE FOLLOWING 
 			REPOSITORY -->
 		<!-- <repository> <id>magnolia.enterprise.releases</id> <url>http://nexus.magnolia-cms.com/content/repositories/magnolia.enterprise.releases</url> 
