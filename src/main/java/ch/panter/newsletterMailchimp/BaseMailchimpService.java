@@ -28,27 +28,27 @@ public abstract class BaseMailchimpService implements SubscriptionService {
 	private Boolean doubleOptin;
 	private Boolean updateExisting;
 
-	public void subscribe(String email, String realName) {
-		subscribe(email, realName, getDefaultListId());
+	public void subscribe(String email, String displayName) {
+		subscribe(email, displayName, getDefaultListId());
 
 	}
 
-	public void subscribe(String email, String realName, String listId) {
-		subscribe(email, realName, listId, null);
+	public void subscribe(String email, String displayName, String listId) {
+		subscribe(email, displayName, listId, null);
 	}
 
-	public void subscribe(String email, String realName,
+	public void subscribe(String email, String displayName,
 			Map<String, String> customFields) {
-		subscribe(email, realName, getDefaultListId(), customFields);
+		subscribe(email, displayName, getDefaultListId(), customFields);
 
 	}
 
-	public void subscribe(String email, String realName, String listId,
+	public void subscribe(String email, String displayName, String listId,
 			Map<String, String> customFields) {
-		subscribe(email, realName, listId, customFields, updateExisting);
+		subscribe(email, displayName, listId, customFields, updateExisting);
 	}
 
-	public void subscribe(String email, String realName, String listId,
+	public void subscribe(String email, String displayName, String listId,
 			Map<String, String> customFields, boolean updateExisting) {
 
 		SubscribeMethod subscribeMethod = new SubscribeMethod();
@@ -66,7 +66,7 @@ public abstract class BaseMailchimpService implements SubscriptionService {
 		subscribeMethod.update_existing = updateExisting;
 		subscribeMethod.double_optin = doubleOptin;
 
-		subscribeMethod.merge_vars = createMergeVars(email, realName,
+		subscribeMethod.merge_vars = createMergeVars(email, displayName,
 				customFields);
 		executeMethod(subscribeMethod);
 	}
@@ -79,12 +79,12 @@ public abstract class BaseMailchimpService implements SubscriptionService {
 	 * project.
 	 * 
 	 * @param email
-	 * @param realName
+	 * @param displayName
 	 * @param customFields
 	 * @return
 	 */
 	protected abstract MailChimpObject createMergeVars(String email,
-			String realName, Map<String, String> customFields);
+			String displayName, Map<String, String> customFields);
 
 	public List<List<String>> getClientLists() {
 		List<List<String>> outList = new ArrayList<List<String>>();

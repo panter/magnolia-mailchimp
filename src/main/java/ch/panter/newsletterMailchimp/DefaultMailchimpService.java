@@ -12,9 +12,9 @@ import com.ecwid.mailchimp.MailChimpObject;
  */
 public class DefaultMailchimpService extends BaseMailchimpService {
 
-	protected MailChimpObject createMergeVars(String email, String realName,
+	protected MailChimpObject createMergeVars(String email, String displayName,
 			Map<String, String> customFields) {
-		return new DefaultMergeVars(email, realName);
+		return new DefaultMergeVars(email, displayName);
 	}
 
 	// Holds a subscriber's merge_vars info (see
